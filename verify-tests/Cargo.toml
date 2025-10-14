@@ -11,6 +11,7 @@ aws_lc_rs_unstable = ["dep:aws-lc-rs", "rcgen/aws_lc_rs_unstable", "rustls-webpk
 fips = ["rcgen/fips"]
 pem = ["dep:pem", "rcgen/pem"]
 ring = ["rcgen/ring"]
+redox = ["rcgen/redox"]
 x509-parser = ["dep:x509-parser", "rcgen/x509-parser"]
 
 [dependencies]
@@ -18,6 +19,7 @@ aws-lc-rs = { workspace = true, optional = true }
 pem = { workspace = true, optional = true }
 rcgen = { path = "../rcgen", features = ["pem", "x509-parser"] }
 ring = { workspace = true }
+ring-redox = { workspace = true }
 rustls-webpki = { workspace = true }
 time = { workspace = true }
 x509-parser = { workspace = true, features = ["verify"], optional = true }

@@ -2,34 +2,38 @@
 name = "rcgen"
 version = "0.14.5"
 documentation = "https://docs.rs/rcgen"
-description.workspace = true
-repository.workspace = true
-readme.workspace = true
-license.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-keywords.workspace = true
+description = "Rust X.509 certificate generator"
+repository = "https://github.com/rustls/rcgen"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "1.71"
+keywords = ["mkcert", "ca", "certificate"]
 
 [features]
 default = ["crypto", "pem", "ring"]
+
 aws_lc_rs = ["crypto", "dep:aws-lc-rs", "aws-lc-rs/aws-lc-sys"]
 aws_lc_rs_unstable = ["aws_lc_rs", "aws-lc-rs/unstable"]
 fips = ["crypto", "dep:aws-lc-rs", "aws-lc-rs/fips"]
 crypto = []
-ring = ["crypto", "dep:ring"]
+redox = ["crypto", "dep:ring-wrapper"]
+ring = ["crypto", "dep:ring-wrapper"]
 
 [dependencies]
-aws-lc-rs = { workspace = true, optional = true }
-pem = { workspace = true, optional = true }
-pki-types = { workspace = true }
-ring = { workspace = true, optional = true }
-time = { workspace = true }
-x509-parser = { workspace = true, features = ["verify"], optional = true }
-yasna = { workspace = true }
-zeroize = { workspace = true, optional = true }
+aws-lc-rs = { version = "1.13.3", default-features = false, optional = true }
+pem = { version = "3.0.2", optional = true }
+pki-types = { package = "rustls-pki-types", version = "1.4.1" }
+ring-wrapper = { workspace = true, optional = true }
+time = { version = "0.3.6", default-features = false }
+x509-parser = { version = "0.18", features = ["verify"], optional = true }
+yasna = { version = "0.5.2", features = ["time", "std"] }
+zeroize = { version = "1.2", optional = true }
+
+
 
 [target."cfg(unix)".dev-dependencies]
-openssl = { workspace = true }
+openssl = "0.10"
 
 [[example]]
 name = "rsa-irc-openssl"

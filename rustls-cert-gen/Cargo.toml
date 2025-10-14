@@ -15,7 +15,8 @@ default = ["ring"]
 aws_lc_rs = ["dep:aws-lc-rs", "rcgen/aws_lc_rs", "aws-lc-rs/aws-lc-sys"]
 aws_lc_rs_unstable = ["rcgen/aws_lc_rs_unstable"]
 fips = ["dep:aws-lc-rs", "rcgen/aws_lc_rs", "aws-lc-rs/fips"]
-ring = ["dep:ring", "rcgen/ring"]
+ring = ["dep:ring-wrapper", "rcgen/ring"]
+redox = ["dep:ring-wrapper", "rcgen/redox"]
 
 [dependencies]
 anyhow = { workspace = true }
@@ -24,7 +25,7 @@ bpaf = { workspace = true }
 pem = { workspace = true }
 pki-types = { workspace = true }
 rcgen = { version = "0.14.2", path = "../rcgen", default-features = false, features = ["pem"] }
-ring = { workspace = true, optional = true }
+ring-wrapper = { workspace = true, optional = true }
 
 [dev-dependencies]
 assert_fs = { workspace = true }

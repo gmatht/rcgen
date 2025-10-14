@@ -1,7 +1,7 @@
 #[cfg(all(feature = "crypto", feature = "aws_lc_rs"))]
 pub(crate) use aws_lc_rs::*;
 #[cfg(all(feature = "crypto", feature = "ring", not(feature = "aws_lc_rs")))]
-pub(crate) use ring::*;
+pub(crate) use ring_wrapper::*;
 
 #[cfg(feature = "crypto")]
 use crate::error::ExternalError;
